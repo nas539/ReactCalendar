@@ -6,24 +6,24 @@ import Content from "./content/content"
 
 const data = [
   {
-    id: 4,
-    monthName: "May",
+    id: 0,
+    month: "May",
     daysInMonth: 31,
     daysInPreviousMonth: 30,
     startDay: 5,
     year: 2020
   },
   {
-    id: 5,
-    monthName: "June",
+    id: 1,
+    month: "June",
     daysInMonth: 30,
     daysInPreviousMonth: 31,
     startDay: 1,
     year: 2020
   },
   {
-    id: 6,
-    monthName: "July",
+    id: 2,
+    month: "July",
     daysInMonth: 31,
     daysInPreviousMonth: 30,
     startDay: 3,
@@ -32,12 +32,59 @@ const data = [
 ]
 
 export default class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      id: "",
+      month: "",
+      daysInMonth: "",
+      daysInPreviousMonth: "",
+      startDay: "",
+      year: ""
+    }
+  }
+
+  componentDidMount() {
+    const month = data[1];
+
+    this.setState({
+      id: month.id,
+      month: month.month,
+      daysInMonth: month.daysInMonth,
+      daysInPreviousMonth: month.daysInPreviousMonth,
+      startDay: month.startDay,
+      year: month.year
+    })
+    this.handleMonthChange = this.handleMonthChange.bind(this);
+  }
+
+  handleMonthChange(direction) {
+    const month = direction === "+" 
+                  ? data[this.state.id + 1] 
+                  : data[this.state.id - 1] 
+
+    this.setState({
+      id: month.id,
+      month: month.month,
+      daysInMonth: month.daysInMonth,
+      daysInPreviousMonth: month.daysInPreviousMonth,
+      startDay: month.startDay,
+      year: month.year
+   })
+   
+  }
+
   render() {
     return (
       <div className='app'>
-        <Header month="June" />
-        <Content />
-        <Footer year="2020" />
+        <Header month={this.state.month} handleMonthChange={this.handleMonthChange} />
+        <Content 
+          daysInMonth={this.state.daysInMonth} 
+          daysInPreviousMonth={this.state.daysInPreviousMonth} 
+          startDay={this.state.startDay}
+        />
+        <Footer year={this.state.year} />
       </div>
     );
   }
