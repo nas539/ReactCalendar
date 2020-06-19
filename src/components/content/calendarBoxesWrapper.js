@@ -20,7 +20,7 @@ export default function calendarBoxesWrapper(props) {
             )
         }
 
-        for (let i = 0; i <= (42 - (props.startDay + props.daysInPreviousMonth)); i++) {
+        for (let i = 1; i <= (42 - (props.startDay + props.daysInPreviousMonth)); i++) {
             boxesContainer.push(
                 <CalendarBox key={`N${i}`} date={i} />
             )
