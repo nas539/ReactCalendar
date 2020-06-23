@@ -2,6 +2,9 @@
     width: 75vw;
     height: calc(100vh - 155px);
     border: 2px solid black;
+    -webkit-box-shadow: 4px 3px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 3px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 4px 3px 15px 0px rgba(0,0,0,0.75);  
 
     .days-wrapper {
         display: grid;
