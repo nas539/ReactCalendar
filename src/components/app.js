@@ -65,6 +65,8 @@ export default class App extends Component {
           daysInMonth={this.state.daysInMonth} 
           daysInPreviousMonth={this.state.daysInPreviousMonth} 
           startDay={this.state.startDay}
+          month={this.state.month}
+          year={this.state.year}
         />
         <Footer year={this.state.year} />
       </div>
