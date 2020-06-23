@@ -28,4 +28,13 @@
             height: calc(100% - 6px);
         }
     }
+
+    .overflow-day {
+        border-color: rgb(130, 130, 130);
+
+        .date {
+            border-color: rgb(130, 130, 130);
+            color: rgb(130, 130, 130);
+        }
+    }
 }

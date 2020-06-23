@@ -4,32 +4,7 @@ import Header from "./header"
 import Footer from "./footer"
 import Content from "./content/content"
 
-const data = [
-  {
-    id: 0,
-    month: "May",
-    daysInMonth: 31,
-    daysInPreviousMonth: 30,
-    startDay: 5,
-    year: 2020
-  },
-  {
-    id: 1,
-    month: "June",
-    daysInMonth: 30,
-    daysInPreviousMonth: 31,
-    startDay: 1,
-    year: 2020
-  },
-  {
-    id: 2,
-    month: "July",
-    daysInMonth: 31,
-    daysInPreviousMonth: 30,
-    startDay: 3,
-    year: 2020
-  }
-]
+
 
 export default class App extends Component {
   constructor() {
@@ -43,10 +18,14 @@ export default class App extends Component {
       startDay: "",
       year: ""
     }
+    this.handleMonthChange = this.handleMonthChange.bind(this);
   }
 
   componentDidMount() {
-    const month = data[1];
+    fetch("http://127.0.0.1:5000/month/get", { method: "GET" })
+    .then(response => response.json())
+    .then(data => {
+      const month = data[1];
 
     this.setState({
       id: month.id,
@@ -56,7 +35,8 @@ export default class App extends Component {
       startDay: month.startDay,
       year: month.year
     })
-    this.handleMonthChange = this.handleMonthChange.bind(this);
+    })
+    .catch(error => console.log(error))
   }
 
   handleMonthChange(direction) {
