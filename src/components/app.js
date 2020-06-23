@@ -11,7 +11,8 @@ export default class App extends Component {
     super()
 
     this.state = {
-      id: "",
+      data: [],
+      position: "",
       month: "",
       daysInMonth: "",
       daysInPreviousMonth: "",
@@ -28,7 +29,8 @@ export default class App extends Component {
       const month = data[1];
 
     this.setState({
-      id: month.id,
+      data: data,
+      position: month.position,
       month: month.month,
       daysInMonth: month.daysInMonth,
       daysInPreviousMonth: month.daysInPreviousMonth,
@@ -41,11 +43,11 @@ export default class App extends Component {
 
   handleMonthChange(direction) {
     const month = direction === "+" 
-                  ? data[this.state.id + 1] 
-                  : data[this.state.id - 1] 
+                  ? this.state.data[this.state.position + 1] 
+                  : this.state.data[this.state.position - 1] 
 
     this.setState({
-      id: month.id,
+      position: month.position,
       month: month.month,
       daysInMonth: month.daysInMonth,
       daysInPreviousMonth: month.daysInPreviousMonth,
