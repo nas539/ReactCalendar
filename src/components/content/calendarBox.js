@@ -15,7 +15,7 @@ export default class CalendarBox extends Component {
     componentDidMount() {
         if (!this.props.overflow) {
             const { date, month, year } = this.props
-            fetch(`http://127.0.0.1:5000/reminder/get/${date}/${month}/${year}`, { method: "GET" })
+            fetch(`https://git.heroku.com/react-calendar-backend.git/reminder/get/${date}/${month}/${year}`, { method: "GET" })
             .then(response => response.json())
             .then(data => {
                 if (data.text) {
@@ -48,7 +48,7 @@ export default class CalendarBox extends Component {
             endpoint = "delete"
             method = "DELETE"
         }
-        fetch(`http://127.0.0.1:5000/reminder/${endpoint}`, {
+        fetch(`https://git.heroku.com/react-calendar-backend.git/reminder/${endpoint}`, {
             method: method,
             headers: {"conten-type": "application/json"},
             body: JSON.stringify({
